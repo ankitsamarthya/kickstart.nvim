@@ -541,8 +541,9 @@ require('lazy').setup {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
+        tsserver = {},
         --
+        rubocop = {},
 
         lua_ls = {
           -- cmd = {...},
@@ -708,6 +709,7 @@ require('lazy').setup {
           end, { 'i', 's' }),
         },
         sources = {
+          { name = 'copilot', group_index = 2 },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
