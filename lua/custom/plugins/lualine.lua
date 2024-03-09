@@ -55,6 +55,11 @@ return {
         theme = my_lualine_theme,
       },
       sections = {
+        lualine_b = {
+          { 'branch' },
+          'diff',
+          'diagnostics',
+        },
         lualine_x = {
           {
             lazy_status.updates,
