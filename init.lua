@@ -661,14 +661,20 @@ require('lazy').setup {
       --    you can use this plugin to help you. It even has snippets
       --    for various frameworks/libraries/etc. but you will have to
       --    set up the ones that are useful for you.
-      -- 'rafamadriz/friendly-snippets',
+      'rafamadriz/friendly-snippets',
+      'windwp/nvim-ts-autotag',
+      'windwp/nvim-autopairs',
     },
     config = function()
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
+      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+      require('nvim-autopairs').setup()
+      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+      require('luasnip.loaders.from_vscode').lazy_load()
       luasnip.config.setup {}
-
+      luasnip.filetype_extend('ruby', { 'rails' })
       cmp.setup {
         snippet = {
           expand = function(args)
@@ -697,6 +703,7 @@ require('lazy').setup {
           --  completions whenever it has completion options available.
           ['<C-Space>'] = cmp.mapping.complete {},
 
+          ['<C-c>'] = cmp.mapping.abort(),
           -- Think of <c-l> as moving to the right of your snippet expansion.
           --  So if you have a snippet that's like:
           --  function $name($args)
@@ -717,10 +724,10 @@ require('lazy').setup {
           end, { 'i', 's' }),
         },
         sources = {
-          { name = 'copilot', group_index = 2 },
           { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-          { name = 'path' },
+          { name = 'copilot', group_index = 2 },
+          { name = 'luasnip', max_item_count = 3 },
+          { name = 'path', max_item_count = 3 },
         },
       }
     end,
