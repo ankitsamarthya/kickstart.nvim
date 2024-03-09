@@ -657,6 +657,7 @@ require('lazy').setup {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
 
+      'hrsh7th/cmp-buffer',
       -- If you want to add a bunch of pre-configured snippets,
       --    you can use this plugin to help you. It even has snippets
       --    for various frameworks/libraries/etc. but you will have to
@@ -725,6 +726,7 @@ require('lazy').setup {
         },
         sources = {
           { name = 'nvim_lsp' },
+          { name = 'buffer', max_item_count = 5 },
           { name = 'copilot', group_index = 2 },
           { name = 'luasnip', max_item_count = 3 },
           { name = 'path', max_item_count = 3 },
@@ -841,7 +843,7 @@ require('lazy').setup {
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
+  require 'kickstart.plugins.indent_line',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
