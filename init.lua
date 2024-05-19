@@ -115,6 +115,7 @@ vim.opt.clipboard = 'unnamedplus'
 -- Enable break indent
 vim.opt.breakindent = true
 
+vim.opt.tabstop = 2
 -- Save undo history
 vim.opt.undofile = true
 
@@ -163,7 +164,9 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagn
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 vim.keymap.set('n', '<leader>bd', '<cmd>%bd|e#<CR>', { desc = '[B]uffer [D]elete' })
-vim.keymap.set('n', '<S-Tab>', '<cmd>bnext<CR>', { desc = 'Next Buffer' })
+vim.keymap.set('n', '<leader>bx', '<cmd>bd<CR>', { desc = '[B]uffer [X]close' })
+vim.keymap.set('n', '<Tab>', '<cmd>bnext<CR>', { desc = 'Next Buffer' })
+vim.keymap.set('n', '<S-Tab>', '<cmd>bprev<CR>', { desc = 'Next Buffer' })
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
